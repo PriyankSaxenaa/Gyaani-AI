@@ -90,37 +90,38 @@ jobs:
       - name: deploy gateway
         run: |
           aws ecs update-service \
-          --cluster ${{ secrets.ECS_CLUSTER || 'gyaani-ai-cluster' }} \
-          --service ${{ secrets.GATEWAY_SERVICE || 'gateway' }} \
+          --cluster ${{ secrets.ECS_CLUSTER || 'backend' }} \
+          --service ${{ secrets.GATEWAY_SERVICE || 'gateway-service' }} \
           --force-new-deployment
 
       - name: deploy auth
         run: |
           aws ecs update-service \
-          --cluster ${{ secrets.ECS_CLUSTER || 'gyaani-ai-cluster' }} \
-          --service ${{ secrets.AUTH_SERVICE || 'auth-service' }} \
+          --cluster ${{ secrets.ECS_CLUSTER || 'backend' }} \
+          --service ${{ secrets.AUTH_SERVICE || 'auth-task-service-9bey9ozf' }} \
           --force-new-deployment
 
       - name: deploy chat
         run: |
           aws ecs update-service \
-          --cluster ${{ secrets.ECS_CLUSTER || 'gyaani-ai-cluster' }} \
+          --cluster ${{ secrets.ECS_CLUSTER || 'backend' }} \
           --service ${{ secrets.CHAT_SERVICE || 'chat-service' }} \
           --force-new-deployment          
 
       - name: deploy agent
         run: |
           aws ecs update-service \
-          --cluster ${{ secrets.ECS_CLUSTER || 'gyaani-ai-cluster' }} \
+          --cluster ${{ secrets.ECS_CLUSTER || 'backend' }} \
           --service ${{ secrets.AGENT_SERVICE || 'agent-service' }} \
           --force-new-deployment
 
       - name: deploy billing
         run: |
           aws ecs update-service \
-          --cluster ${{ secrets.ECS_CLUSTER || 'gyaani-ai-cluster' }} \
+          --cluster ${{ secrets.ECS_CLUSTER || 'backend' }} \
           --service ${{ secrets.BILLING_SERVICE || 'billing-service' }} \
           --force-new-deployment  
+
 
 
 
