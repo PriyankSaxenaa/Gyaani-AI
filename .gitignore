@@ -69,5 +69,3 @@ firebase-adminsdk*.json
 # =========================
 .cache/
 tmp/
-
-README.md
